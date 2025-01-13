@@ -12,25 +12,72 @@ import java.util.Scanner;
  */
 public class TourDeJeu {
     //Creation du tableau du jeu et des joueurs
+
     
+    /**
+     * Verifica se a entrada está no formato correto (letra de 'a' a 'h' e número de '1' a '8').
+     * 
+     * @param input A entrada do jogador.
+     * @return true se a entrada for válida, false caso contrário.
+     */
+    public static boolean isValidEntry(String input) {
+        return input != null && input.matches("^[a-h][1-8]$");
+    }
+    
+    
+    /**
+     * Main class
+     * @param args 
+     */
     public static void main(String[] args) {
         
         //Debut du jeu
         Scanner scanner = new Scanner(System.in);
         String input;
         boolean isValid;
-        Tableau tableau = new Tableau();
         
         //Creation du tableau du jeu et des joueurs
+        Tableau tableau = new Tableau();
         Joueur joueur1 = new Joueur();
         Joueur joueur2 = new Joueur();
 
         joueur1.setNom("Lari");
+        joueur1.setCouleur(false); //false == noir
+        
         joueur2.setNom("Clara");
+        joueur2.setCouleur(true); //true == blanc
 
         //Debut du jeu
-        
         tableau.init();
+        
+        while(tableau.existePlace()){
+            tableau.affiche();
+            
+            //Noir joue en premier
+            if(joueur1.getPeutJouer()){
+                //joueur noir choissis leur prochain peon
+                do {
+                    System.out.print("Entrée de 'a1' a 'h8': ");
+                    input = scanner.nextLine().trim(); // Sort les spaces
+                    isValid = isValidEntry(input);
+
+                    if (!isValid) {
+                        System.out.println("Entrada inválida. Tente novamente.");
+                    }
+                } while (!isValid);
+                tableau.addPeon(joueur1);
+                
+                scanner.close();
+                
+                }
+            
+            if(joueur2.getPeutJouer()){
+                //joueur blanc joue
+            }
+
+        }
+            
+        tableau.affiche();
 
  
 
@@ -54,15 +101,5 @@ public class TourDeJeu {
             System.out.println("Entrada válida: " + input);
             scanner.close();
         }
-    }
-
-    /**
-     * Verifie si l'entrée est dans le bon format (char de 'a' a 'h' e chiffre de '1' a '8').
-     * 
-     * @param input L'entrée du joueur
-     * @return true si l'entrée est valide et false sinon.
-     */
-    public static boolean isValidEntry(String input) {
-        return input != null && input.matches("^[a-h][1-8]$");
     }
 }
