@@ -4,6 +4,9 @@
  */
 package com.mycompany.othello;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Larissa et Clara
@@ -111,23 +114,85 @@ public class Tableau {
     }
 
     
-    /**
-     * Ajout un nouveau peon au tableau
-     * @param joueur1 Proprietaire du peon
-     * @param pos String avec la position d'ajout
-     */
-    public void addPeon(Joueur joueur1, String pos){
-        char colonne = pos.charAt(0);
-        int ligne = (Character.getNumericValue(pos.charAt(1)))-1;
 
-        int nbColonne = colonne - 'a';
-   
-        Peon peon = new Peon(joueur1.getCouleur(), ligne, nbColonne);
-        
-        this.tableau[ligne][nbColonne] = peon;
-        System.out.println("Peon ajouté");
+    /**
+     * Ajoute un nouveau peon au tableau et capture les peons adverses.
+     * @param joueur1 Propriétaire du peon
+     * @param pos String avec la position d'ajout (par ex. "d3")
+     */
+    public void addPeon(Joueur joueur1, String pos) {
+        // Convertir la position en coordonnées
+        int x = pos.charAt(1) - '1'; // Ligne
+        int y = pos.charAt(0) - 'a'; // Colonne
+
+        // Vérifier si la position est valide
+        if (tableau[x][y] != null) {
+            System.out.println("Position déjà occupée. Veuillez choisir une autre position.");
+            return;
+        }
+
+        // Ajouter le peon du joueur
+        tableau[x][y] = new Peon(joueur1.getCouleur(), x, y);
+
+        // Capturer les peons adverses dans toutes les directions
+        int[][] directions = {
+            {-1, 0}, {1, 0}, // Vertical
+            {0, -1}, {0, 1}, // Horizontal
+            {-1, -1}, {-1, 1}, {1, -1}, {1, 1} // Diagonales
+        };
+
+        for (int[] direction : directions) {
+            capturerPeons(joueur1, x, y, direction[0], direction[1]);
+        }
+
+        System.out.println("Peon ajouté en " + pos + " et les peons adverses capturés.");
     }
 
+    /**
+     * Capture les peons adverses dans une direction donnée.
+     * @param joueur1 Le joueur qui joue
+     * @param x Position initiale (ligne)
+     * @param y Position initiale (colonne)
+     * @param dx Direction de la ligne
+     * @param dy Direction de la colonne
+     */
+    private void capturerPeons(Joueur joueur1, int x, int y, int dx, int dy) {
+        boolean couleurJoueur = joueur1.getCouleur();
+        List<int[]> peonsACapturer = new ArrayList<>();
+        int i = x + dx;
+        int j = y + dy;
+
+        // Parcourir dans la direction donnée
+        while (i >= 0 && i < height && j >= 0 && j < width) {
+            Peon peon = tableau[i][j];
+            if (peon == null) {
+                // Arrête si case vide
+                break;
+            } else if (peon.getCouleur() != couleurJoueur) {
+                // Ajouter les peons adverses à capturer
+                peonsACapturer.add(new int[]{i, j});
+            } else {
+                // Même couleur trouvée, capturer les peons
+                for (int[] pos : peonsACapturer) {
+                    tableau[pos[0]][pos[1]].setCouleur(couleurJoueur);
+                }
+                return;
+            }
+
+            i += dx;
+            j += dy;
+        }
+    }
+
+    
+    /**
+     * Verifie s'il y a encore des places sur le tableau pour la definition de la fin du jeu
+     * @return 
+     */
+    public boolean existePlace(){
+        return true;
+    }
+    
     /*
     * Verifie si le tableau est plein
     * @return true si oui et false sinon.
