@@ -10,12 +10,16 @@ package com.mycompany.othello;
  */
 public class TourDeJeu {
     //Creation du tableau du jeu et des joueurs
-    Tableau tableau = new Tableau();
-    Joueur joueur1 = new Joueur();
-    Joueur joueur2 = new Joueur();
     
-    
-    
-    //Debut du jeu
-    
+    public static void main(String[] args){
+        Tableau tableau = new Tableau();
+        Joueur joueur1 = new Joueur();
+        Joueur joueur2 = new Joueur();
+
+        joueur1.setNom("Lari");
+        joueur2.setNom("Clara");
+
+        //Debut du jeu
+       
+    }
 }
