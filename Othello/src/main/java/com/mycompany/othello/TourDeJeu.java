@@ -49,7 +49,7 @@ public class TourDeJeu {
         //Debut du jeu
         tableau.init();
         
-        while(tableau.existePlace()){
+        while(!tableau.isFull()){
             tableau.affiche();
             
             //Noir joue en premier
@@ -64,41 +64,25 @@ public class TourDeJeu {
                         System.out.println("Entrada inválida. Tente novamente.");
                     }
                 } while (!isValid);
-                tableau.addPeon(joueur1);
-                
-                scanner.close();
-                
+                tableau.addPeon(joueur1, input);
                 }
             
             if(joueur2.getPeutJouer()){
                 //joueur blanc joue
-            }
+                //joueur noir choissis leur prochain peon
+                do {
+                    System.out.print("Entrée de 'a1' a 'h8': ");
+                    input = scanner.nextLine().trim(); // Sort les spaces
+                    isValid = isValidEntry(input);
 
-        }
-            
-        tableau.affiche();
-
- 
-
-        while (!tableau.isFull()) {
-            do {
-                System.out.print("Entrée de 'a1' a 'h8': ");
-                input = scanner.nextLine().trim(); // Sort les spaces
-                isValid = isValidEntry(input);
-
-                if (!isValid) {
-                    System.out.println("Entrada inválida. Tente novamente.");
+                    if (!isValid) {
+                        System.out.println("Entrada inválida. Tente novamente.");
+                    }
+                } while (!isValid);
+                tableau.addPeon(joueur2, input);
                 }
-            } while (!isValid);
-
-            char letter = input.charAt(0);
-            int column = (int)(input.charAt(1)) - 1;
-
-            int line = letter - 'a';
-
-
-            System.out.println("Entrada válida: " + input);
+            }
             scanner.close();
-        }
     }
+
 }
