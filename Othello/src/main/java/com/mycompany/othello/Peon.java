@@ -14,7 +14,7 @@ public class Peon {
     private int y;
     
     public Peon(boolean couleur, int x, int y)  {
-        this.couleur = couleur;
+        this.couleur = couleur; // blanc = true, noir = false
         this.x = x;
         this.y = y;
     }
