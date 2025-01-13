@@ -32,6 +32,7 @@ public class Joueur {
 
     /**
      * Calcul des positions jouables pour ce joueur
+     * Calcule si le joueur peut joueur selon les regles du jeu.
      */
     public void calculPeutJouer() {
         peutJouerPositions.clear(); // Limpa a lista antes de recalcular

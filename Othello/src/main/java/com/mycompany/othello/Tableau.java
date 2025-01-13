@@ -44,7 +44,7 @@ public class Tableau {
         return tableau;
     }
     
-        /**
+    /**
     * Vérifie si le joueur peut placer un pion dans la position donnée
     * @param joueur Le joueur qui joue
     * @param x La position x 

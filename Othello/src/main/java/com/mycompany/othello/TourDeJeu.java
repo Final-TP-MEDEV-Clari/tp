@@ -90,6 +90,7 @@ public class TourDeJeu {
             }
             
             if(joueur2.getPeutJouer()){
+                 tableau.affiche();
                 //joueur blanc joue
                 do {
                     System.out.print("Entrée de 'a1' a 'h8': ");
