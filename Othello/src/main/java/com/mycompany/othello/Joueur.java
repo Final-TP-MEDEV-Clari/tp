@@ -1,8 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.othello;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -10,29 +9,27 @@ package com.mycompany.othello;
  */
 public class Joueur {
     private String nom;
-    private boolean peutJouer;
-    private boolean couleur;
+    private boolean couleur; // True: Branco; False: Preto
     private Tableau tableau;
+    private List<int[]> peutJouerPositions; // Lista de posições jogáveis
 
-    
     /**
-     * Constructeur par default Joueur
+     * Constructeur par défaut Joueur
      */
-    public Joueur(){
+    public Joueur() {
         this.nom = "";
-        this.peutJouer = true;
         this.couleur = false;
+        this.peutJouerPositions = new ArrayList<>();
     }
 
     /**
-     * Getter PeutJouer
-     * @return getPeutJouer
+     * Getter PeutJouerPositions
+     * @return Liste des positions jouables
      */
-    public boolean getPeutJouer() {
-        return peutJouer;
+    public List<int[]> getPeutJouerPositions() {
+        return peutJouerPositions;
     }
 
-    
     public boolean isPeutJouer() {
         return peutJouer;
     }
@@ -50,50 +47,82 @@ public class Joueur {
     }
     
     /**
-     * Calcule si le joueur peut joueur selon les regles du jeu.
+     * Calcul des positions jouables pour ce joueur
      */
     public void calculPeutJouer() {
-        for (int i = 0; i<8; i++) {
-            for (int j = 0; j<8; j++) {
+        peutJouerPositions.clear(); // Limpa a lista antes de recalcular
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
                 if (tableau.peutPlacer(this, i, j)) {
-                    this.peutJouer = true;
-                    return;
+                    peutJouerPositions.add(new int[] {i, j});
                 }
             }
         }
-        this.peutJouer = false;
     }
 
     /**
-     * getter Nom
-     * @return
+     * Verifica se o jogador pode jogar (baseado na lista de posições)
+     * @return true se houver pelo menos uma posição jogável, false caso contrário
+     */
+    public boolean peutJouer() {
+        return !peutJouerPositions.isEmpty();
+    }
+
+    public void afficherPossibilites() {
+        List<int[]> possibilites = this.getPeutJouerPositions();
+
+        if (possibilites.isEmpty()) {
+            System.out.println(this.getNom() + ", vous n'avez aucune possibilité de jouer.");
+            return;
+        }
+
+        System.out.println(this.getNom() + ", vous pouvez jouer aux positions suivantes :");
+        for (int[] position : possibilites) {
+            // Converte x para letra ('a' + coluna)
+            char lettre = (char) ('a' + position[0]);
+            // Converte y para número (linha + 1)
+            int numero = position[1] + 1;
+
+            System.out.println(lettre + "" + numero);
+        }
+    }
+
+    public boolean getPeutJouer() {
+        if (peutJouerPositions.isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Getter Nom
+     * @return Le nom du joueur
      */
     public String getNom() {
         return nom;
     }
 
     /**
-     * Setter nom
-     * @param nom
+     * Setter Nom
+     * @param nom Le nom du joueur
      */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
     /**
-     * getter Couleur
-     * @return couleur
+     * Getter Couleur
+     * @return La couleur du joueur
      */
     public boolean getCouleur() {
         return couleur;
     }
 
     /**
-     * setter Couleur
-     * @param couleur
+     * Setter Couleur
+     * @param couleur La couleur du joueur
      */
     public void setCouleur(boolean couleur) {
         this.couleur = couleur;
     }
-    
 }
