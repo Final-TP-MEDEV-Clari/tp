@@ -30,5 +30,10 @@
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
         <exec.mainClass>com.mycompany.othello.Othello</exec.mainClass>
+        <sonar.host.url>http://localhost:9000</sonar.host.url>
+        <sonar.login>sqp_5b9f2aa7e76a87770477babdd51d617b1151995c</sonar.login>
+        <sonar.projectKey>MEDEVNote</sonar.projectKey>
+        <sonar.projectName>MEDEVNote</sonar.projectName>
     </properties>
+
 </project>
