@@ -49,10 +49,7 @@ public class Tableau {
     * @return true si le joueur pet placer et false sinon.
     */
     public boolean peutPlacer(Joueur joueur, int x, int y){
-        
-     
         return false;
-
     }
     
     /**
@@ -62,6 +59,7 @@ public class Tableau {
      * @param pos String avec la position d'ajout
      */
     public void addPeon(Joueur joueur1, String pos){
+        
         System.out.println("Peon ajouté");
     }
     
