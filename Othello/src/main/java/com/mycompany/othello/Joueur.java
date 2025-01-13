@@ -30,24 +30,13 @@ public class Joueur {
         return peutJouerPositions;
     }
 
-    public boolean isPeutJouer() {
-        return peutJouer;
-    }
-
-    /**
-     * Setter PeutJouer
-     * @param peutJouer
-     */
-    public void setPeutJouer(boolean peutJouer) {
-        this.peutJouer = peutJouer;
-    }
 
     public void setTableau(Tableau tableau) {
         this.tableau = tableau;
     }
     
     /**
-     * Calcul des positions jouables pour ce joueur
+     * Calcule si le joueur peut joueur selon les regles du jeu.
      */
     public void calculPeutJouer() {
         peutJouerPositions.clear(); // Limpa a lista antes de recalcular
@@ -93,6 +82,7 @@ public class Joueur {
         }
         return true;
     }
+
 
     /**
      * Getter Nom

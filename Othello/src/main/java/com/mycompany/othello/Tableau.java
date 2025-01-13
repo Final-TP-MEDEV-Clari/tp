@@ -44,14 +44,14 @@ public class Tableau {
         return tableau;
     }
     
-        /**
+
+    /**
     * Vérifie si le joueur peut placer un pion dans la position donnée
     * @param joueur Le joueur qui joue
     * @param x La position x 
     * @param y La position y
     * @return true si le joueur peut placer un pion, false sinon
     */
-
     public boolean peutPlacer(Joueur joueur, int x, int y) {
         // Vérifie si la position est dans les limites et vide
         if (x < 0 || x >= height || y < 0 || y >= width || tableau[x][y] != null) {
@@ -112,8 +112,6 @@ public class Tableau {
 
         return false; // Aucun pion du joueur trouvé pour capturer
     }
-
-    
 
     /**
      * Ajoute un nouveau peon au tableau et capture les peons adverses.

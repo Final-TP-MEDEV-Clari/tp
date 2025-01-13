@@ -11,7 +11,9 @@ import java.util.Scanner;
  * @author Clara
  */
 public class TourDeJeu {
+    //Creation du tableau du jeu et des joueurs
 
+    
     /**
      * Verifica se a entrada está no formato correto (letra de 'a' a 'h' e número de '1' a '8').
      * 
@@ -27,7 +29,6 @@ public class TourDeJeu {
      * Main class
      * @param args 
      */
-   
     public static void main(String[] args) {
         
         //Debut du jeu
@@ -105,8 +106,6 @@ public class TourDeJeu {
                 joueur1.calculPeutJouer();
             }
         }
-
-        
             scanner.close();
 
     }
