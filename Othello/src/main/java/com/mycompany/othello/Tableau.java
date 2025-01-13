@@ -6,7 +6,7 @@ package com.mycompany.othello;
 
 /**
  *
- * @author Clara
+ * @author Larissa et Clara
  */
 public class Tableau {
     public static int width = 8;
@@ -14,10 +14,16 @@ public class Tableau {
 
     private Peon[][] tableau;
 
+    /**
+    * Constructeur de la classe Tableau
+    */
     public Tableau() {
         this.tableau = new Peon[width][height];
     }
     
+    /**
+    * Inicialisation du tableau
+    */
     public void init() {
         this.tableau[3][3] = new Peon(true, 3, 3);
         this.tableau[4][4] = new Peon(true, 4, 4);
@@ -26,21 +32,33 @@ public class Tableau {
         this.tableau[4][3] = new Peon(false, 4, 3);
     }
     
+    /**
+     * Setter tableau
+     * @param tableau
+     */
     public Peon[][] getTableau() {
         return tableau;
     }
 
-    public void setTableau(Peon[][] tableau) {
-        this.tableau = tableau;
-    }
     
+    /**
+    * Verifie si le joueur peut placer le peon dans la position
+    * @param joueur Le joueur à joueur
+    * @param x La position x
+    * @param y La position y
+    * @return true si le joueur pet placer et false sinon.
+    */
     public boolean peutPlacer(Joueur joueur, int x, int y){
         
      
-    return false;
+        return false;
 
     }
     
+    /**
+    * Verifie si le tableau est plein
+    * @return true si oui et false sinon.
+    */
     public boolean isFull() {
         for (int i=0;i<8;i++) {
             for (int j=0;j<8;j++) {

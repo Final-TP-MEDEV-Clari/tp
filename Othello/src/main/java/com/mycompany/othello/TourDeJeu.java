@@ -57,10 +57,10 @@ public class TourDeJeu {
     }
 
     /**
-     * Verifica se a entrada está no formato correto (letra de 'a' a 'h' e número de '1' a '8').
+     * Verifie si l'entrée est dans le bon format (char de 'a' a 'h' e chiffre de '1' a '8').
      * 
-     * @param input A entrada do jogador.
-     * @return true se a entrada for válida, false caso contrário.
+     * @param input L'entrée du joueur
+     * @return true si l'entrée est valide et false sinon.
      */
     public static boolean isValidEntry(String input) {
         return input != null && input.matches("^[a-h][1-8]$");
