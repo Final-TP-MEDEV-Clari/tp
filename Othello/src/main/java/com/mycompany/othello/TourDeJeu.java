@@ -20,12 +20,17 @@ public class TourDeJeu {
         String input;
         boolean isValid;
         Tableau tableau = new Tableau();
-        tableau.init();
+        
+        //Creation du tableau du jeu et des joueurs
         Joueur joueur1 = new Joueur();
         Joueur joueur2 = new Joueur();
 
         joueur1.setNom("Lari");
         joueur2.setNom("Clara");
+
+        //Debut du jeu
+        
+        tableau.init();
 
  
 
