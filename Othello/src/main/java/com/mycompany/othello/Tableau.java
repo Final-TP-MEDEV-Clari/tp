@@ -34,11 +34,21 @@ public class Tableau {
         this.tableau = tableau;
     }
     
-    public boolean peutPlacer(Joueur joueur, String pos){
-        char letter = pos.charAt(0);
-        int number = (int)(pos.charAt(1));
+    public boolean peutPlacer(Joueur joueur, int x, int y){
+
      
     return false;
 
+    }
+    
+    public boolean isFull() {
+        for (int i=0;i<8;i++) {
+            for (int j=0;j<8;j++) {
+                if (tableau[i][j] == null) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

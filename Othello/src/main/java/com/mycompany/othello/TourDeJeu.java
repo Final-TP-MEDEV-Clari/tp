@@ -34,18 +34,26 @@ public class TourDeJeu {
 
  
 
-        do {
-            System.out.print("Entrée de 'a1' a 'h8': ");
-            input = scanner.nextLine().trim(); // Sort les spaces
-            isValid = isValidEntry(input);
-            
-            if (!isValid) {
-                System.out.println("Entrada inválida. Tente novamente.");
-            }
-        } while (!isValid);
+        while (!tableau.isFull()) {
+            do {
+                System.out.print("Entrée de 'a1' a 'h8': ");
+                input = scanner.nextLine().trim(); // Sort les spaces
+                isValid = isValidEntry(input);
 
-        System.out.println("Entrada válida: " + input);
-        scanner.close();
+                if (!isValid) {
+                    System.out.println("Entrada inválida. Tente novamente.");
+                }
+            } while (!isValid);
+
+            char letter = input.charAt(0);
+            int column = (int)(input.charAt(1)) - 1;
+
+            int line = letter - 'a';
+
+
+            System.out.println("Entrada válida: " + input);
+            scanner.close();
+        }
     }
 
     /**
