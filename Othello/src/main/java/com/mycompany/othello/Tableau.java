@@ -35,7 +35,7 @@ public class Tableau {
     }
     
     public boolean peutPlacer(Joueur joueur, int x, int y){
-
+        
      
     return false;
 
