@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="othello" default="build" basedir=".">
+
+    <!-- Proprietes -->
+    <!-- Declaration de tous les dossiers pour utilisation du build -->
+    <property name="src.dir" location="${basedir}/src/main/java"/>
+    <property name="build.dir" location="${basedir}/target/classes"/>
+    <property name="test.src.dir" location="${basedir}/src/test/java"/>
+    <property name="test.build.dir" location="${basedir}/target/test-classes"/>
+    <property name="jar.dir" location="${basedir}/target"/>
+    <property name="jar.name" value="othello.jar"/>
+    <property name="javadoc.dir" location="${basedir}/target/javadoc"/>
+    <property name="lib.dir" location="${basedir}/lib"/>
+
+    <!-- Nettoyage des fichiers de compilation avant demarrage -->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${test.build.dir}"/>
+        <delete dir="${jar.dir}"/>
+        <delete dir="${javadoc.dir}"/>
+    </target>
+
+    <!-- Compilation des classes -->
+    <!-- Fichiers .class localises au dossier /classes -->
+    <target name="compile" depends="clean">
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
+            <include name="**/*.java"/>
+        </javac>
+    </target>
+
+    <!-- Compilation des tests -->
+    <!-- Fichiers .class des classes de test au dossiers /classes dans le dossier test-->
+    <target name="compile-tests" depends="compile">
+        <mkdir dir="${test.build.dir}"/>
+        <javac srcdir="${test.src.dir}" destdir="${test.build.dir}" includeantruntime="false">
+            <classpath>
+                <pathelement path="${build.dir}"/>
+                <fileset dir="${lib.dir}">
+                    <include name="*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+    <!-- Execution des tests -->
+    <target name="test" depends="compile-tests">
+        <mkdir dir="${jar.dir}/test-reports"/>
+        <junit printsummary="true" haltonfailure="false">
+            <classpath>
+                <pathelement path="${build.dir}"/>
+                <pathelement path="${test.build.dir}"/>
+                <fileset dir="${lib.dir}">
+                    <include name="*.jar"/>
+                </fileset>
+            </classpath>
+            <batchtest fork="true" todir="${jar.dir}/test-reports">
+                <fileset dir="${test.build.dir}">
+                    <include name="**/*Test*.class"/>
+                </fileset>
+            </batchtest>
+            <formatter type="xml"/>
+            <formatter type="plain"/>
+        </junit>
+    </target>
+
+    <!-- Generation du executable .jar -->
+    <!-- fichier de nom othello.jar localise sur /target -->
+    <target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${jar.name}" basedir="${build.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <!-- Generation de la javadoc -->
+    <!-- Dossier target/javadoc --> 
+    <target name="javadoc" depends="compile">
+        <mkdir dir="${javadoc.dir}"/>
+        <javadoc sourcepath="${src.dir}" destdir="${javadoc.dir}"/>
+    </target>
+
+    <!-- Build complet -->
+    <target name="build" depends="jar,javadoc,test"/>
+
+</project>
+
+
