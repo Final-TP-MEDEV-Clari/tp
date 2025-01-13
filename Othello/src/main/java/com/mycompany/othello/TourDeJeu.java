@@ -58,15 +58,35 @@ public class TourDeJeu {
             //Noir joue en premier
             if(joueur1.getPeutJouer()){
                 //joueur noir choissis leur prochain peon
+                
+                
                 do {
-                    System.out.print("Entrée de 'a1' a 'h8': ");
-                    input = scanner.nextLine().trim(); // Sort les spaces
+                    joueur1.afficherPossibilites();
+                    System.out.print("Entrée de 'a1' à 'h8': ");
+                    input = scanner.nextLine().trim(); // Remove espaços em branco
                     isValid = isValidEntry(input);
-                    
+
                     if (!isValid) {
-                        System.out.println("Entrada inválida. Tente novamente.");
+                        System.out.println("Entrée invalide. À nouveau, s'il vous plaît.");
+                        continue;
+                    }
+
+                    // Converte a entrada 'a1' em coordenadas [x, y]
+                    int y = input.charAt(1) - '1'; // Linha (número - 1)
+                    int x = input.charAt(0) - 'a'; // Coluna (letra -> índice)
+
+                    // Verifica se a posição está nas possibilidades do jogador
+                    boolean isInPossibleMoves = joueur1.getPeutJouerPositions().stream()
+                        .anyMatch(pos -> pos[0] == x && pos[1] == y);
+
+                    if (!isInPossibleMoves) {
+                        System.out.println("Position non valide. Choisissez parmi les positions disponibles.");
+                        isValid = false;
                     }
                 } while (!isValid);
+                
+
+                if (tableau.peutPlacer(joueur1,x,y))
                 tableau.addPeon(joueur1, input);
                 joueur2.calculPeutJouer();
             }
@@ -79,7 +99,7 @@ public class TourDeJeu {
                     isValid = isValidEntry(input);
 
                     if (!isValid) {
-                        System.out.println("Entrada inválida. Tente novamente.");
+                        System.out.println("Entree invalide. à nouveau svp.");
                     }
                 } while (!isValid);
                 tableau.addPeon(joueur2, input);
