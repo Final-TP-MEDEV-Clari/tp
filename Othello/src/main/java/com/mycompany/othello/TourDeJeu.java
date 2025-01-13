@@ -56,36 +56,31 @@ public class TourDeJeu {
                     System.out.print("Entrée de 'a1' a 'h8': ");
                     input = scanner.nextLine().trim(); // Sort les spaces
                     isValid = isValidEntry(input);
-
+                    
                     if (!isValid) {
                         System.out.println("Entrada inválida. Tente novamente.");
                     }
                 } while (!isValid);
-                tableau.addPeon(joueur1);
-                
-                scanner.close();
-                
+                tableau.addPeon(joueur1, input);
                 }
             
             if(joueur2.getPeutJouer()){
                 //joueur blanc joue
+                do {
+                    System.out.print("Entrée de 'a1' a 'h8': ");
+                    input = scanner.nextLine().trim(); // Sort les spaces
+                    isValid = isValidEntry(input);
+                   
+                    if (!isValid) {
+                        System.out.println("Entrada inválida. Tente novamente.");
+                    }
+                } while (!isValid);
+                tableau.addPeon(joueur2, input);
+                }
             }
+        
+            scanner.close();
 
         }
-            
-        tableau.affiche();
 
-        do {
-            System.out.print("Entrée de 'a1' a 'h8': ");
-            input = scanner.nextLine().trim(); // Sort les spaces
-            isValid = isValidEntry(input);
-            
-            if (!isValid) {
-                System.out.println("Entrada inválida. Tente novamente.");
-            }
-        } while (!isValid);
-
-        System.out.println("Entrada válida: " + input);
-        scanner.close();
-    }
 }
