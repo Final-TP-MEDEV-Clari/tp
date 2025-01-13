@@ -34,7 +34,7 @@ public class Tableau {
     }
     
     /**
-     * Setter tableau
+     * Getter tableau
      * @param tableau
      */
     public Peon[][] getTableau() {
@@ -70,8 +70,8 @@ public class Tableau {
                 break;
             }
         }
-
         return peutPlacer;
+        
     }
 
     /**

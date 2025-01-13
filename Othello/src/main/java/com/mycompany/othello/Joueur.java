@@ -12,6 +12,8 @@ public class Joueur {
     private String nom;
     private boolean peutJouer;
     private boolean couleur;
+    private Tableau tableau;
+
     
     /**
      * Constructeur par default Joueur
@@ -30,12 +32,33 @@ public class Joueur {
         return peutJouer;
     }
 
+    
+    public boolean isPeutJouer() {
+        return peutJouer;
+    }
+
+    public void setPeutJouer(boolean peutJouer) {
+        this.peutJouer = peutJouer;
+    }
+
+    public void setTableau(Tableau tableau) {
+        this.tableau = tableau;
+    }
+    
     /**
      * Setter PeutJouer
      * @param peutJouer
      */
-    public void setPeutJouer(boolean peutJouer) {
-        this.peutJouer = peutJouer;
+    public void calculPeutJouer() {
+        for (int i = 0; i<8; i++) {
+            for (int j = 0; j<8; j++) {
+                if (tableau.peutPlacer(this, i, j)) {
+                    this.peutJouer = true;
+                    return;
+                }
+            }
+        }
+        this.peutJouer = false;
     }
 
     /**

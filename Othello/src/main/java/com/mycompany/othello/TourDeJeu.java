@@ -43,14 +43,16 @@ public class TourDeJeu {
 
         joueur1.setNom("Lari");
         joueur1.setCouleur(false); //false == noir
+        joueur1.setTableau(tableau);
         
         joueur2.setNom("Clara");
         joueur2.setCouleur(true); //true == blanc
-
+        joueur2.setTableau(tableau);
+        
         //Debut du jeu
         tableau.init();
         
-        while(!tableau.isFull()){
+        while(!tableau.isFull() && joueur1.getPeutJouer() && joueur2.getPeutJouer()){
             tableau.affiche();
             
             //Noir joue en premier
@@ -66,7 +68,8 @@ public class TourDeJeu {
                     }
                 } while (!isValid);
                 tableau.addPeon(joueur1, input);
-                }
+                joueur2.calculPeutJouer();
+            }
             
             if(joueur2.getPeutJouer()){
                 //joueur blanc joue
@@ -80,11 +83,12 @@ public class TourDeJeu {
                     }
                 } while (!isValid);
                 tableau.addPeon(joueur2, input);
-                }
+                joueur1.calculPeutJouer();
             }
+        }
 
             scanner.close();
 
-        }
+    }
 
 }
