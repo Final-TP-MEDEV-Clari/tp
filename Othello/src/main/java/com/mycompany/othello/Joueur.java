@@ -37,6 +37,10 @@ public class Joueur {
         return peutJouer;
     }
 
+    /**
+     * Setter PeutJouer
+     * @param peutJouer
+     */
     public void setPeutJouer(boolean peutJouer) {
         this.peutJouer = peutJouer;
     }
@@ -46,8 +50,7 @@ public class Joueur {
     }
     
     /**
-     * Setter PeutJouer
-     * @param peutJouer
+     * Calcule si le joueur peut joueur selon les regles du jeu.
      */
     public void calculPeutJouer() {
         for (int i = 0; i<8; i++) {
