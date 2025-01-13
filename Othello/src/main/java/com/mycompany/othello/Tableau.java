@@ -21,6 +21,7 @@ public class Tableau {
         this.tableau = new Peon[width][height];
     }
     
+    
     /**
     * Inicialisation du tableau
     */
