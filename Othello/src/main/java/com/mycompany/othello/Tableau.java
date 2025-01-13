@@ -111,21 +111,7 @@ public class Tableau {
 
     
     /**
-    * Verifie si le tableau est plein
-    * @return true si oui et false sinon.
-    */
-    public boolean isFull() {
-        for (int i=0;i<8;i++) {
-            for (int j=0;j<8;j++) {
-                if (tableau[i][j] == null) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
 
-    /*
      * Ajout un nouveau peon au tableau
      */
     public void addPeon(){
@@ -140,6 +126,20 @@ public class Tableau {
         return true;
     }
     
+    /*
+    * Verifie si le tableau est plein
+    * @return true si oui et false sinon.
+    */
+    public boolean isFull() {
+        for (int i=0;i<8;i++) {
+            for (int j=0;j<8;j++) {
+                if (tableau[i][j] == null) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
    /**
     * Affiche le tableau pour l'utilisateur
     */
