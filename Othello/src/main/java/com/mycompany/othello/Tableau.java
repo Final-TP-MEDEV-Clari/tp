@@ -51,4 +51,36 @@ public class Tableau {
         }
         return true;
     }
+   /**
+    * Affiche le tableau pour l'utilisateur
+    */
+    public void affiche() {
+        System.out.print("  "); 
+        for (char c = 'a'; c <= 'h'; c++) {
+            System.out.print(c + " ");
+        }
+        System.out.println();
+
+        
+        for (int i = 0; i < height; i++) {
+            System.out.print((i + 1) + " ");
+
+            for (int j = 0; j < width; j++) {
+                Peon peon = this.tableau[i][j];
+                if (peon == null) {
+                    System.out.print(". ");
+                } else {
+                    System.out.print((peon.getCouleur() ? "B" : "N") + " ");
+                }
+            }
+            System.out.println((i + 1));
+        }
+
+        System.out.print("  ");
+        for (char c = 'a'; c <= 'h'; c++) {
+            System.out.print(c + " ");
+        }
+        System.out.println();
+    }
+
 }

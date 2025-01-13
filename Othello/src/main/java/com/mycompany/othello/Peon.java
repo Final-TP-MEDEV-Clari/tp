@@ -35,7 +35,7 @@ public class Peon {
         this.y = y;
     }
 
-    public boolean isCouleur() {
+    public boolean getCouleur() {
         return couleur;
     }
 
