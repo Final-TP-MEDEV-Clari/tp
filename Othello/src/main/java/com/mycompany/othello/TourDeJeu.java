@@ -58,8 +58,7 @@ public class TourDeJeu {
             //Noir joue en premier
             if(joueur1.getPeutJouer()){
                 //joueur noir choissis leur prochain peon
-                
-                
+ 
                 do {
                     joueur1.afficherPossibilites();
                     System.out.print("Entrée de 'a1' à 'h8': ");
@@ -85,10 +84,9 @@ public class TourDeJeu {
                     }
                 } while (!isValid);
                 
-
-                if (tableau.peutPlacer(joueur1,x,y))
                 tableau.addPeon(joueur1, input);
                 joueur2.calculPeutJouer();
+                
             }
             
             if(joueur2.getPeutJouer()){
