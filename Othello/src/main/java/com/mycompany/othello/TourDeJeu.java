@@ -9,5 +9,13 @@ package com.mycompany.othello;
  * @author Clara
  */
 public class TourDeJeu {
+    //Creation du tableau du jeu et des joueurs
+    Tableau tableau = new Tableau();
+    Joueur joueur1 = new Joueur();
+    Joueur joueur2 = new Joueur();
+    
+    
+    
+    //Debut du jeu
     
 }

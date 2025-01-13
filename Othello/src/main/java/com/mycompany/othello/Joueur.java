@@ -9,8 +9,15 @@ package com.mycompany.othello;
  * @author Clara
  */
 public class Joueur {
+    private String nom;
     private boolean peutJouer;
     private boolean couleur;
+    
+    public Joueur(){
+        this.nom = "";
+        this.peutJouer = true;
+        this.couleur = false;
+    }
 
     public boolean isPeutJouer() {
         return peutJouer;
