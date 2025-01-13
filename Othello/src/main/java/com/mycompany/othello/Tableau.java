@@ -37,8 +37,8 @@ public class Tableau {
     public boolean peutPlacer(Joueur joueur, String pos){
         char letter = pos.charAt(0);
         int number = (int)(pos.charAt(1));
-        
-        int position = pos - 'a' + 1;
+     
+    return false;
 
     }
 }
