@@ -118,18 +118,17 @@ public class Tableau {
      * @param pos String avec la position d'ajout
      */
     public void addPeon(Joueur joueur1, String pos){
+        char colonne = pos.charAt(0);
+        int ligne = (Character.getNumericValue(pos.charAt(1)))-1;
+
+        int nbColonne = colonne - 'a';
+   
+        Peon peon = new Peon(joueur1.getCouleur(), ligne, nbColonne);
         
+        this.tableau[ligne][nbColonne] = peon;
         System.out.println("Peon ajouté");
     }
-    
-    /**
-     * Verifie s'il y a encore des places sur le tableau pour la definition de la fin du jeu
-     * @return 
-     */
-    public boolean existePlace(){
-        return true;
-    }
-    
+
     /*
     * Verifie si le tableau est plein
     * @return true si oui et false sinon.
