@@ -40,7 +40,6 @@ public class Tableau {
     public Peon[][] getTableau() {
         return tableau;
     }
-
     
     /**
     * Vérifie si le joueur peut placer un pion dans la position donnée
