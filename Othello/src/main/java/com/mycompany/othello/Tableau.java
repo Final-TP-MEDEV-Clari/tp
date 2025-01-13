@@ -42,6 +42,21 @@ public class Tableau {
 
     }
     
+    /**
+     * Ajout un nouveau peon au tableau
+     */
+    public void addPeon(){
+        System.out.println("Peon ajouté");
+    }
+    
+    /**
+     * Verifie s'il y a encore des places sur le tableau pour la definition de la fin du jeu
+     * @return 
+     */
+    public boolean existePlace(){
+        return true;
+    }
+    
    /**
     * Affiche le tableau pour l'utilisateur
     */
