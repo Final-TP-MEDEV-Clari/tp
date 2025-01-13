@@ -34,7 +34,6 @@ public class Tableau {
     
     /**
      * Setter tableau
-     * @param tableau
      */
     public Peon[][] getTableau() {
         return tableau;
@@ -56,7 +55,6 @@ public class Tableau {
     }
     
     /**
-
      * Ajout un nouveau peon au tableau
      * @param joueur1 Proprietaire du peon
      * @param pos String avec la position d'ajout

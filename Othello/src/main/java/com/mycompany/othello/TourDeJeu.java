@@ -59,7 +59,7 @@ public class TourDeJeu {
                     System.out.print("Entrée de 'a1' a 'h8': ");
                     input = scanner.nextLine().trim(); // Sort les spaces
                     isValid = isValidEntry(input);
-
+                    
                     if (!isValid) {
                         System.out.println("Entrada inválida. Tente novamente.");
                     }
@@ -69,7 +69,7 @@ public class TourDeJeu {
             
             if(joueur2.getPeutJouer()){
                 //joueur blanc joue
-                //joueur noir choissis leur prochain peon
+
                 do {
                     System.out.print("Entrée de 'a1' a 'h8': ");
                     input = scanner.nextLine().trim(); // Sort les spaces
@@ -82,7 +82,10 @@ public class TourDeJeu {
                 tableau.addPeon(joueur2, input);
                 }
             }
+
+        
             scanner.close();
-    }
+
+        }
 
 }
