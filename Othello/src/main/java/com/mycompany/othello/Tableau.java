@@ -113,8 +113,10 @@ public class Tableau {
     /**
 
      * Ajout un nouveau peon au tableau
+     * @param joueur1 Proprietaire du peon
+     * @param pos String avec la position d'ajout
      */
-    public void addPeon(){
+    public void addPeon(Joueur joueur1, String pos){
         System.out.println("Peon ajouté");
     }
     

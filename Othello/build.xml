@@ -9,6 +9,7 @@
     <property name="test.build.dir" location="${basedir}/target/test-classes"/>
     <property name="jar.dir" location="${basedir}/target"/>
     <property name="jar.name" value="othello.jar"/>
+    <property name="main.class" value="com.mycompany.othello.TourDeJeu"/>
     <property name="javadoc.dir" location="${basedir}/target/javadoc"/>
     <property name="lib.dir" location="${basedir}/lib"/>
 
