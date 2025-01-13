@@ -33,23 +33,82 @@ public class Tableau {
     }
     
     /**
-     * Setter tableau
+     * Getter tableau
      */
     public Peon[][] getTableau() {
         return tableau;
     }
 
     
-    /**
-    * Verifie si le joueur peut placer le peon dans la position
-    * @param joueur Le joueur à joueur
-    * @param x La position x
+        /**
+    * Vérifie si le joueur peut placer un pion dans la position donnée
+    * @param joueur Le joueur qui joue
+    * @param x La position x 
     * @param y La position y
-    * @return true si le joueur pet placer et false sinon.
+    * @return true si le joueur peut placer un pion, false sinon
     */
-    public boolean peutPlacer(Joueur joueur, int x, int y){
-        return false;
+
+    public boolean peutPlacer(Joueur joueur, int x, int y) {
+        // Vérifie si la position est dans les limites et vide
+        if (x < 0 || x >= height || y < 0 || y >= width || tableau[x][y] != null) {
+            return false;
+        }
+
+        // Directions possibles : horizontal, vertical, diagonal
+        int[][] directions = {
+            {-1, -1}, {-1, 0}, {-1, 1},
+            {0, -1},          {0, 1},
+            {1, -1}, {1, 0},  {1, 1}
+        };
+
+        boolean peutPlacer = false;
+        for (int[] dir : directions) {
+            int dx = dir[0], dy = dir[1];
+            if (peutCapturerDansDirection(joueur, x, y, dx, dy)) {
+                peutPlacer = true;
+                break;
+            }
+        }
+
+        return peutPlacer;
     }
+
+    /**
+    * Vérifie si des pions peuvent être capturés dans une direction donnée
+    * @param joueur Le joueur qui joue
+    * @param x La position x de départ
+    * @param y La position y de départ
+    * @param dx Direction en x
+    * @param dy Direction en y
+    * @return true si des pions peuvent être capturés, false sinon
+    */
+    private boolean peutCapturerDansDirection(Joueur joueur, int x, int y, int dx, int dy) {
+        boolean trouvéAdversaire = false;
+        int i = x + dx;
+        int j = y + dy;
+
+        // Parcourt dans la direction donnée
+        while (i >= 0 && i < height && j >= 0 && j < width) {
+            Peon actuel = tableau[i][j];
+
+            if (actuel == null) {
+                return false; // Aucun pion dans cette direction
+            }
+
+            if (actuel.getCouleur() != joueur.getCouleur()) {
+                trouvéAdversaire = true; // Trouvé un pion adverse
+            } else {
+                // Si un pion du joueur est trouvé après des pions adverses
+                return trouvéAdversaire;
+            }
+
+            i += dx;
+            j += dy;
+        }
+
+        return false; // Aucun pion du joueur trouvé pour capturer
+    }
+
     
     /**
      * Ajout un nouveau peon au tableau
