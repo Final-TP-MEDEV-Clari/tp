@@ -11,14 +11,23 @@ import java.util.Scanner;
  * @author Clara
  */
 public class TourDeJeu {
+    //Creation du tableau du jeu et des joueurs
     
     public static void main(String[] args) {
+        
+        //Debut du jeu
         Scanner scanner = new Scanner(System.in);
         String input;
         boolean isValid;
         Tableau tableau = new Tableau();
-        
         tableau.init();
+        Joueur joueur1 = new Joueur();
+        Joueur joueur2 = new Joueur();
+
+        joueur1.setNom("Lari");
+        joueur2.setNom("Clara");
+
+ 
 
         do {
             System.out.print("Entrée de 'a1' a 'h8': ");
